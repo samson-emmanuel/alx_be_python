@@ -5,17 +5,22 @@ time_bound = input("Is it time-bound? (yes/no): ").lower()
 match priority:
     case "high":
         if time_bound == "yes":
-            print("Finish project report, is a high priority task that requires immediate attendtion today.")
+            reminder = "Finish project report, is a high priority task that requires immediate attendtion today."
+            print(reminder)
         else:
-            print("Set a reminder for today for this high-priority task.")
+            reminder = "Set a reminder for today for this high-priority task."
+            print(reminder)
     case "medium":
         if time_bound == "yes":
-            print("Complete the task by the end of the week.")
+            reminder = "Complete the task by the end of the week."
+            print(reminder)
         else:
-            print("Schedule the task for later this week.")
+            reminder = "Schedule the task for later this week."
+            print(reminder)
     case "low":
         if time_bound == "yes":
-            print("Try to finish the task by the end of the month.")    
+            reminder = "Try to finish the task by the end of the month."
+            print(reminder)    
         else:
-            print("You can do this task whenever you have free time.")
-    
+            reminder = "You can do this task whenever you have free time."
+            print(reminder)
