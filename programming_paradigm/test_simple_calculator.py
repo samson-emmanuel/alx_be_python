@@ -1,22 +1,28 @@
 import sys
 from simple_calculator import *
+import unittest
 
 
-def main ():
-    if len(sys.argv) != 3:
-        print("Usage: python test_simple_calculator.py <num1> <num2>")
-        sys.exit(1)
+class TestSimpleCalculator(unittest.TestCase):
+    def setUp(self):
+        self.calculator = SimpleCalculator()
 
-    num1 = float(sys.argv[1])
-    num2 = float(sys.argv[2])
+    def test_add(self):
+        self.assertEqual(self.calculator.add(2, 3), 5)
+        self.assertEqual(self.calculator.add(-1, 1), 0)
+        self.assertEqual(self.calculator.add(-1, -1), -2)
 
-    calculator = SimpleCalculator()
+    def test_subtract(self):
+        self.assertEqual(self.calculator.subtract(5, 3), 2)
+        self.assertEqual(self.calculator.subtract(0, 0), 0)
+        self.assertEqual(self.calculator.subtract(-1, -1), 0)
 
-    print(f"Addition: {calculator.add(num1, num2)}")
-    print(f"Subtraction: {calculator.subtract(num1, num2)}")
-    print(f"Multiplication: {calculator.multiply(num1, num2)}")
-    division_result = calculator.divide(num1, num2)
-    if division_result is None:
-        print("Division: Error - Cannot divide by zero.")
-    else:
-        print(f"Division: {division_result}")
+    def test_multiply(self):
+        self.assertEqual(self.calculator.multiply(4, 5), 20)
+        self.assertEqual(self.calculator.multiply(-1, 1), -1)
+        self.assertEqual(self.calculator.multiply(-2, -3), 6)
+
+    def test_divide(self):
+        self.assertEqual(self.calculator.divide(10, 2), 5)
+        self.assertEqual(self.calculator.divide(5, 0), None)
+        self.assertEqual(self.calculator.divide(-6, -2), 3)
