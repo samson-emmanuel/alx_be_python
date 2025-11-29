@@ -2,7 +2,7 @@ import sys
 from bank_account import BankAccount
 
 def main():
-    account = BankAccount()  # Start balance at 0 unless tests set it manually
+    account = BankAccount()
 
     if len(sys.argv) < 2:
         print("Usage: python main.py <command>:<amount>")
@@ -15,17 +15,25 @@ def main():
         if params:
             amount = float(params[0])
             account.deposit(amount)
+            print(f"Deposited: ${amount:.2f}")
         else:
             print("Usage: python main.py deposit:<amount>")
+
     elif command == "withdraw":
         if params:
             amount = float(params[0])
-            if not account.withdraw(amount):
+            success = account.withdraw(amount)
+            if success:
+                print(f'Withdrew: ${amount:.2f}')
+            else:
                 print("Insufficient funds.")
         else:
             print("Usage: python main.py withdraw:<amount>")
+
     elif command == "display":
-        account.display_balance()
+        bal = account.get_balance()
+        print(f"Current Balance: ${bal:.2f}")
+
     else:
         print("Invalid command.")
 
