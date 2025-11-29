@@ -4,14 +4,15 @@ class BankAccount:
 
 
     def deposit(self, amount):
-        current_balance = self.account_balance + amount
-        print(f'Current Balance: {current_balance}')
+        self.account_balance += amount
+        print(f'Deposited: ${amount}')
 
     def withdraw(self, amount):
         if amount > self.account_balance:
-            raise ValueError("Insufficient funds")
-        current_balance = self.account_balance - amount
-        print(f'Current Balance: {current_balance}')
+            return False
+        self.account_balance -= amount
+        print(f'Withdrew: ${amount}')
+        return True
 
     def display_balance(self):
-        return self.account_balance
+        print(f'Current Balance: ${self.account_balance}')
