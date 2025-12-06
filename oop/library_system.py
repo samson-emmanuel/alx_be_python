@@ -15,7 +15,7 @@ class EBook(Book):
         return f"EBook('{self.title}', '{self.author}', {self.file_size})"
     
 
-class PrintedBook(Book):
+class PrintBook(Book):
     def __init__(self, title, author, page_count):
         super().__init__(title, author)
         self.page_count = page_count  # in grams
